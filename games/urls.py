@@ -12,10 +12,22 @@ Class-based views
 Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+
+
+
+
+
+Go to urls.py and create a path for our pokemon detail view.
+Import our get_pokemon view.
+Add a path that is starts with pokemons/ and contains an id in its path.
+
 """
 from django.contrib import admin
 from django.urls import path
+from pokemon.views import get_pokemon
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("pokemons/<int:pokemon_id>", get_pokemon),
+
 ]

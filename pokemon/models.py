@@ -1,5 +1,6 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
+ 
 
 
 class Pokemon(models.Model):
@@ -28,3 +29,6 @@ class Pokemon(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_html(self):
+        return f"<h1>{self.name}</h1>\n<p>{self.type}</p>\n<p>{self.hp}</p>"
