@@ -24,11 +24,21 @@ Add a path that is starts with pokemons/ and contains an id in its path.
 """
 from django.contrib import admin
 from django.urls import path
-from pokemon.views import get_pokemon, get_pokemons
+from pokemon.views import get_pokemon, get_pokemons, PokeListApiView, PokeObjAPIView, PokeObjUpdateAPIView, PokeObjDeleteAPIView, PokeObjCreateAPIView, PokeRUDAPIView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("pokemon/<int:pokemon_id>", get_pokemon),
     path("pokemons/", get_pokemons),
+    
+    #API Endpoints
+    path("pokemonapi/", PokeListApiView.as_view()),
+    path("poke/<int:pokemon_id>", PokeObjAPIView.as_view()),
+    path("poke/update/<int:pokemon_id>", PokeObjUpdateAPIView.as_view()),
+    path("poke/delete/<int:pokemon_id>", PokeObjDeleteAPIView.as_view()),
+    path("poke/add/", PokeObjCreateAPIView.as_view()),
+
+    #CRUD API
+    path("poke/rud/<int:pokemon_id>", PokeRUDAPIView.as_view()),
 
 ]
